@@ -1,0 +1,78 @@
+ :root {
+    --bg: #f6f7f9; --surface: #ffffff; --text: #15181e; --muted: #566070;
+    --line: #dde1e8; --accent: #1f4fd8; --accent-soft: #e6ecfc;
+    --c-kw: #1f4fd8; --c-str: #0f7a4f; --c-var: #15181e; --c-com: #7a8494;
+    --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  [data-theme="dark"] {
+    --bg: #0f1218; --surface: #171b23; --text: #e7eaf0; --muted: #9aa3b2;
+    --line: #262c38; --accent: #6ea0ff; --accent-soft: #1b2740;
+    --c-kw: #6ea0ff; --c-str: #6fd6a4; --c-var: #e7eaf0; --c-com: #6b7587;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: var(--sans); font-size: 1.0625rem; line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .wrap { width: min(100% - 2.5rem, 46rem); margin-inline: auto; }
+
+  header.top { position: sticky; top: 0; z-index: 10; background: var(--bg); border-bottom: 1px solid var(--line); }
+  header.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 3.5rem; }
+  .brand { font-family: var(--mono); font-weight: 700; color: var(--text); text-decoration: none; }
+  nav { display: flex; align-items: center; gap: 1.25rem; }
+  nav a { color: var(--muted); text-decoration: none; font-size: .95rem; }
+  nav a:hover { color: var(--text); }
+  #theme-toggle {
+    font: inherit; font-size: 1rem; line-height: 1; cursor: pointer; color: var(--text);
+    background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: .4rem .6rem;
+  }
+  #theme-toggle:hover { border-color: var(--accent); }
+
+  section { padding: 4rem 0 0; }
+  h1, h2, h3 { font-family: var(--mono); line-height: 1.2; margin: 0; }
+  h1 { font-size: clamp(2.4rem, 8vw, 3.6rem); letter-spacing: -0.03em; }
+  h2 { font-size: 1.35rem; margin-bottom: 1.25rem; }
+  h2::before { content: "// "; color: var(--c-com); }
+  p { margin: 0 0 1rem; }
+
+  .hero { padding-top: 4.5rem; }
+  .hero .lead { font-size: 1.2rem; color: var(--muted); margin: 1rem 0 1.75rem; max-width: 36rem; }
+  .links { display: flex; flex-wrap: wrap; gap: .75rem; margin-bottom: 2.5rem; }
+  .btn {
+    display: inline-block; padding: .55rem 1.1rem; border-radius: 8px; text-decoration: none;
+    font-family: var(--mono); font-size: .92rem; border: 1px solid var(--line); color: var(--text); background: var(--surface);
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  .btn.primary:hover { color: var(--bg); opacity: .9; }
+
+  pre.code {
+    margin: 0; padding: 1.25rem 1.4rem; background: var(--surface); border: 1px solid var(--line);
+    border-radius: 10px; font-family: var(--mono); font-size: .9rem; line-height: 1.75; overflow-x: auto; color: var(--c-var);
+  }
+  .k { color: var(--c-kw); } .s { color: var(--c-str); } .c { color: var(--c-com); }
+
+  dl.skills { margin: 0; display: grid; grid-template-columns: 8rem 1fr; gap: .9rem 1rem; }
+  dl.skills dt { font-family: var(--mono); font-size: .9rem; color: var(--muted); padding-top: .1rem; }
+  dl.skills dd { margin: 0; }
+
+  .project { padding: 1.4rem 0; border-top: 1px solid var(--line); }
+  .project:last-child { border-bottom: 1px solid var(--line); }
+  .project h3 { font-size: 1.05rem; margin-bottom: .35rem; }
+  .project p { color: var(--muted); margin-bottom: .6rem; }
+  .tags { font-family: var(--mono); font-size: .82rem; color: var(--accent); }
+
+  footer { margin-top: 5rem; padding: 1.75rem 0 2.5rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .92rem; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem; }
+
+  @media (max-width: 34rem) {
+    dl.skills { grid-template-columns: 1fr; gap: .15rem; }
+    dl.skills dd { margin-bottom: .8rem; }
+    nav a { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
